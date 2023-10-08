@@ -1,0 +1,88 @@
+.header {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding: 0 30px;
+    margin-bottom: 20px;
+
+    &__btn {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        border-radius: 4px;
+        color: gray;
+        height: 40px;
+        width: 40px;
+        transition: 0.3s;
+
+        &:hover {
+            background: darken($color: white, $amount: 20%);
+        }
+    }
+
+    &__right {
+        display: flex;
+        gap: 7px;
+        margin-left: auto;
+    }
+
+    &-zoom {
+        display: flex;
+        gap: 5px;
+
+        &__btn {
+            font-size: 16px;
+        }
+
+        &__count {
+            width: 70px;
+            font-size: 14px;
+        }
+
+        &__list {
+            display: flex;
+            flex-direction: column;
+            background-color: white;
+            border-radius: 4px;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            padding: 5px 0;
+            position: absolute;
+            right: 85px;
+            top: 63px;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 1;
+            transition: opacity 0.3s;
+
+            &.active {
+                opacity: 1;
+                pointer-events: auto;
+            }
+        }
+
+        &__item {
+            display: flex;
+            gap: 7px;
+            padding: 10px;
+            padding-right: 20px;
+            cursor: pointer;
+            font-size: 13px;
+
+            span {
+                color: gray;
+            }
+
+            svg {
+                fill: #5D3FD3;
+            }
+
+            &:hover {
+                background: darken($color: white, $amount: 20%);
+            }
+        }
+    }
+}

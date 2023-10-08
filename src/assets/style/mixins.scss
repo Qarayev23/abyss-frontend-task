@@ -1,0 +1,31 @@
+$colors: (goldenrod , rgba(0, 132, 255, 0.854), gray, green, brown, black, cadetblue);
+
+@function get-color($index) {
+  $color-count: length($colors);
+  $adjusted-index: $index % $color-count + 1;
+  @return nth($colors, $adjusted-index);
+}
+
+@mixin apply-color($level) {
+  background-color: get-color($level);
+}
+
+@mixin generate-category-list($depth, $max-depth, $repeat) {
+  .node {
+    @include apply-color($depth);
+  }
+
+  @if $depth < $max-depth {
+    .category-list {
+      @include generate-category-list($depth + 1, $max-depth, $repeat);
+    }
+  } @else if $repeat > 0 {
+    .category-list {
+      @include generate-category-list(1, $max-depth, $repeat - 1);
+    }
+  }
+}
+
+.tree {
+  @include generate-category-list(0, 6, 2);
+}
